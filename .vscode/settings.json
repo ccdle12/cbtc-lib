@@ -18,6 +18,7 @@
         "string": "cpp",
         "string_view": "cpp",
         "vector": "cpp",
-        "*.ipp": "cpp"
+        "*.ipp": "cpp",
+        "ratio": "cpp"
     }
 }

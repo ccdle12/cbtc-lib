@@ -24,5 +24,6 @@ class FieldElement
         FieldElement operator+(FieldElement fe2);
         FieldElement operator*(FieldElement fe2);
         FieldElement powers(int power);
+        FieldElement operator/(FieldElement fe2);
 };
 #endif /* FieldElement_hpp */

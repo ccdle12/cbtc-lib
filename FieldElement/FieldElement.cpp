@@ -59,3 +59,15 @@ FieldElement FieldElement::powers(int power)
 
     return FieldElement(num, this->prime);
 };
+
+FieldElement FieldElement::operator/(FieldElement fe2)
+{   
+    check_primes_the_same(fe2.getPrime());
+
+    // formula
+    // this->num * std::pow(fe2.getNum(), this->prime - 2) % this->prime
+    int b = std::pow(fe2.getNum(), this->prime - 2);
+    int num = (this->num * b) % this->prime;
+
+    return FieldElement(num, this->prime);
+};

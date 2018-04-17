@@ -76,7 +76,28 @@ BOOST_AUTO_TEST_CASE(powers_of_field_element)
 {
     FieldElement p1 = FieldElement(9, 11);
     FieldElement p2 = p1.powers(2);
-
-    std::cout << "P2: " << p2.getNum() << std::endl;
     BOOST_CHECK(p2.getNum() == 4);
+
+    FieldElement p3 = FieldElement(5, 7);
+    FieldElement p4 = p3.powers(9);
+    BOOST_CHECK(p4.getNum() == 6);
+
+    FieldElement p5 = FieldElement(2, 5);
+    FieldElement p6 = p5.powers(12);
+    BOOST_CHECK(p6.getNum() == 1);
+}
+
+BOOST_AUTO_TEST_CASE(division)
+{
+    FieldElement p1 = FieldElement(2, 11);
+    FieldElement p2 = FieldElement(3, 11);
+
+    FieldElement p3 = p1 / p2;
+    BOOST_CHECK(p3.getNum() == 8);
+
+    FieldElement p4 = FieldElement(6, 7);
+    FieldElement p5 = FieldElement(4, 7);
+
+    FieldElement p6 = p4 / p5;
+    BOOST_CHECK(p6.getNum() == 5);
 }
