@@ -12,7 +12,7 @@ BOOST_AUTO_TEST_CASE(sanitycheck)
 
 BOOST_AUTO_TEST_CASE(point_constructor_throw)
 {
-    // BOOST_CHECK_THROW(Point(2, 7, 5, 7), std::runtime_error);
+    BOOST_CHECK_THROW(Point(FieldElement(2, 31), FieldElement(7, 31), FieldElement(5, 31), FieldElement(7, 31)), std::runtime_error);
     // BOOST_CHECK_THROW(Point(4358934, 1948234, 0, 7), std::runtime_error);
     // BOOST_CHECK_THROW(Point(NULL, NULL, 0, 7), std::runtime_error);
 };

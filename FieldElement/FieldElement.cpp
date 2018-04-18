@@ -50,6 +50,14 @@ FieldElement FieldElement::operator*(FieldElement fe2)
     return FieldElement(num, getPrime());
 };
 
+FieldElement FieldElement::operator-(FieldElement fe2)
+{
+    check_primes_the_same(fe2.getPrime());
+
+    int num = (this->num - fe2.getNum()) % this->prime;
+    return FieldElement(num, getPrime());
+};
+
 FieldElement FieldElement::powers(int power)
 {   
     int exponent = power % (this->prime - 1);
