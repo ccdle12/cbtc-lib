@@ -4,11 +4,6 @@
 #include <iostream>
 #include "./FieldElement.cpp"
 
-BOOST_AUTO_TEST_CASE(sanitycheck)
-{
-    std::cout << "Hello, tests" << std::endl;
-};
-
 BOOST_AUTO_TEST_CASE(initialize_fieldelement)
 {
     FieldElement fieldElement = FieldElement(10, 31);
@@ -27,7 +22,7 @@ BOOST_AUTO_TEST_CASE(check_for_equality)
     FieldElement fe5 = FieldElement(11, 31);
     FieldElement fe6 = FieldElement(11, 32);
     BOOST_CHECK(fe5 != fe6);
-}
+};
 
 BOOST_AUTO_TEST_CASE(adding_field_elements)
 {
@@ -45,13 +40,13 @@ BOOST_AUTO_TEST_CASE(adding_field_elements)
     FieldElement fe7 = FieldElement(10, 31);
     FieldElement fe8 = fe6 + fe7;
     BOOST_CHECK(fe8.getNum() == 9);
-}
+};
 
 BOOST_AUTO_TEST_CASE(number_not_within_field_error)
 {
     BOOST_CHECK_THROW(FieldElement(50, 31), std::runtime_error);
     BOOST_CHECK_THROW(FieldElement(-1, 31), std::runtime_error);
-}
+};
 
 BOOST_AUTO_TEST_CASE(multiply_field_elements)
 {
@@ -70,7 +65,7 @@ BOOST_AUTO_TEST_CASE(multiply_field_elements)
     FieldElement fe8 = FieldElement(19, 31);
     FieldElement fe9 = fe7 * fe8;
     BOOST_CHECK(fe9.getNum() == 12);
-}
+};
 
 BOOST_AUTO_TEST_CASE(powers_of_field_element)
 {
@@ -85,7 +80,7 @@ BOOST_AUTO_TEST_CASE(powers_of_field_element)
     FieldElement p5 = FieldElement(2, 5);
     FieldElement p6 = p5.powers(12);
     BOOST_CHECK(p6.getNum() == 1);
-}
+};
 
 BOOST_AUTO_TEST_CASE(division)
 {
@@ -100,4 +95,4 @@ BOOST_AUTO_TEST_CASE(division)
 
     FieldElement p6 = p4 / p5;
     BOOST_CHECK(p6.getNum() == 5);
-}
+};
