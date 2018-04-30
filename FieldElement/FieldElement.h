@@ -7,7 +7,7 @@ class FieldElement
 {   
     // variables
     private:
-        int num, prime;
+        int mNum, mPrime;
         bool check_primes_the_same(int prime);
 
     public:
@@ -16,7 +16,11 @@ class FieldElement
         int getPrime();
 
         // constructor
-        FieldElement(int num, int prime);
+        FieldElement(int num, int prime): mNum(num), mPrime(prime) 
+        {
+            if (mNum > mPrime || mNum < 0) 
+                throw std::runtime_error("Num must be within field of prime");
+        }
 
         // arithmetic
         bool operator==(FieldElement fe2);

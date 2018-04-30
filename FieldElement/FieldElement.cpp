@@ -3,42 +3,33 @@
 // private
 bool FieldElement::check_primes_the_same(int prime)
 {
-    if (this->prime != prime)
+    if (FieldElement::mPrime != prime)
         throw std::runtime_error("Primes must be the same");
 
         return true;
 }
 
-// constructor
-FieldElement::FieldElement(int num, int prime)
-{
-    if (num > prime || num < 0)
-        throw std::runtime_error("Num must be within field of prime");
-
-    this->num = num;
-    this->prime = prime;
-};
-
 // public    
-int FieldElement::getNum() { return this->num; }
-int FieldElement::getPrime() { return this->prime; }
+int FieldElement::getNum() { return FieldElement::mNum; }
+int FieldElement::getPrime() { return FieldElement::mPrime; }
+
 
 // arithmetic
 bool FieldElement::operator==(FieldElement fe2)
 {
-    return this->num == fe2.getNum() && this->prime == fe2.getPrime();
+    return FieldElement::mNum == fe2.getNum() && FieldElement::mPrime == fe2.getPrime();
 };
 
 bool FieldElement::operator!=(FieldElement fe2)
 {
-    return this->num == fe2.getNum() && this->prime == fe2.getPrime() ? false : true;
+    return FieldElement::mNum == fe2.getNum() && FieldElement::mPrime == fe2.getPrime() ? false : true;
 };
 
 FieldElement FieldElement::operator+(FieldElement fe2)
 {
     check_primes_the_same(fe2.getPrime());
 
-    int num = (this->num + fe2.getNum()) % this->prime;
+    int num = (FieldElement::mNum + fe2.getNum()) % FieldElement::mPrime;
     return FieldElement(num, getPrime());
 };
 
@@ -46,7 +37,7 @@ FieldElement FieldElement::operator*(FieldElement fe2)
 {
     check_primes_the_same(fe2.getPrime());
 
-    int num = (this->num * fe2.getNum()) % this->prime;
+    int num = (FieldElement::mNum * fe2.getNum()) % FieldElement::mPrime;
     return FieldElement(num, getPrime());
 };
 
@@ -54,18 +45,18 @@ FieldElement FieldElement::operator-(FieldElement fe2)
 {
     check_primes_the_same(fe2.getPrime());
 
-    int num = (this->num - fe2.getNum()) % this->prime;
+    int num = (FieldElement::mNum - fe2.getNum()) % FieldElement::mPrime;
     return FieldElement(num, getPrime());
 };
 
 FieldElement FieldElement::powers(int power)
 {   
-    int exponent = power % (this->prime - 1);
+    int exponent = power % (FieldElement::mPrime - 1);
 
-    int pow_product = std::pow(this->num, exponent);
-    int num = pow_product % this->prime;
+    int pow_product = std::pow(FieldElement::mNum, exponent);
+    int num = pow_product % FieldElement::mPrime;
 
-    return FieldElement(num, this->prime);
+    return FieldElement(num, FieldElement::mPrime);
 };
 
 FieldElement FieldElement::operator/(FieldElement fe2)
@@ -73,9 +64,9 @@ FieldElement FieldElement::operator/(FieldElement fe2)
     check_primes_the_same(fe2.getPrime());
 
     // formula
-    // this->num * std::pow(fe2.getNum(), this->prime - 2) % this->prime
-    int b = std::pow(fe2.getNum(), this->prime - 2);
-    int num = (this->num * b) % this->prime;
+    // FieldElement::mNum * std::pow(fe2.getNum(), FieldElement::mPrime - 2) % FieldElement::mPrime
+    int b = std::pow(fe2.getNum(), FieldElement::mPrime - 2);
+    int num = (FieldElement::mNum * b) % FieldElement::mPrime;
 
-    return FieldElement(num, this->prime);
+    return FieldElement(num, FieldElement::mPrime);
 };
