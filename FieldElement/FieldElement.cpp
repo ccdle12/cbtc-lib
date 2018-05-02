@@ -9,10 +9,17 @@ bool FieldElement::check_primes_the_same(int prime)
         return true;
 }
 
-// public    
-int FieldElement::getNum() { return FieldElement::mNum; }
-int FieldElement::getPrime() { return FieldElement::mPrime; }
+// public
+// constructor
+FieldElement::FieldElement(int num, int prime): mNum(num), mPrime(prime) 
+{
+    if (mNum > mPrime || mNum < 0) 
+        throw std::runtime_error("Num must be within field of prime");
+}
 
+// setters and getters    
+int FieldElement::getNum() { return mNum; }
+int FieldElement::getPrime() { return mPrime; }
 
 // arithmetic
 bool FieldElement::operator==(FieldElement fe2)

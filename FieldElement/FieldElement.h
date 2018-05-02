@@ -16,11 +16,7 @@ class FieldElement
         int getPrime();
 
         // constructor
-        FieldElement(int num, int prime): mNum(num), mPrime(prime) 
-        {
-            if (mNum > mPrime || mNum < 0) 
-                throw std::runtime_error("Num must be within field of prime");
-        }
+        FieldElement(int num, int prime);
 
         // arithmetic
         bool operator==(FieldElement fe2);
