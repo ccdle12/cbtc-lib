@@ -15,7 +15,9 @@ Point::Point(FieldElement &x, FieldElement &y, FieldElement &a, FieldElement &b)
 };
 	
 Point::Point(const int x, const int y, const int a, const int b, const int prime)
-	: mX(new FieldElement(x, prime)), mY(new FieldElement(y, prime)), mA(new FieldElement(a, prime)), mB(new FieldElement(b, prime)){};
+	: mX(new FieldElement(x, prime)), mY(new FieldElement(y, prime)), 
+	  mA(new FieldElement(a, prime)), mB(new FieldElement(b, prime))
+	  {};
 
 // setter and getters
 FieldElement Point::getX() { return *mX; };
