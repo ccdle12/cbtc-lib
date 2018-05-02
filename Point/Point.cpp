@@ -3,7 +3,8 @@
 #include <cmath>
 
 // constructor
-Point::Point(FieldElement *x, FieldElement *y, FieldElement *a, FieldElement *b)
+Point::Point(FieldElement &x, FieldElement &y, FieldElement &a, FieldElement &b)
+	: mX(&x), mY(&y), mA(&a), mB(&b) 
 {
 	// unsure how to handle point at infinity
 	// if (x.getNum() == NULL && y.getNum() == NULL)
@@ -11,16 +12,14 @@ Point::Point(FieldElement *x, FieldElement *y, FieldElement *a, FieldElement *b)
 	
 	// if (y.powers(2) != x.powers(3) + (a * x) + b)
 	// 	throw std::runtime_error("Point not on curve");
-
-	mX = x;
-    mY = y;
-    mA = a;
-    mB = b;
 };
+	
+Point::Point(const int x, const int y, const int a, const int b, const int prime)
+	: mX(new FieldElement(x, prime)), mY(new FieldElement(y, prime)), mA(new FieldElement(a, prime)), mB(new FieldElement(b, prime)){};
 
 // setter and getters
-FieldElement* Point::getX() { return this->mX; };
-FieldElement* Point::getY() { return this->mY; };
+FieldElement Point::getX() { return *mX; };
+FieldElement Point::getY() { return *mY; };
 
 // // arithmetic
 // bool Point::operator==(Point p2)

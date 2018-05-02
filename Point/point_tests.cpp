@@ -18,31 +18,17 @@ BOOST_AUTO_TEST_CASE(constructor_with_FieldElement)
     FieldElement a = FieldElement(5, 31);
     FieldElement b = FieldElement(7, 31);
 
-    Point point = Point(&x, &y, &a, &b);
-    BOOST_CHECK_EQUAL(point.getX()->getNum(), 18);
-    BOOST_CHECK_EQUAL(point.getX()->getPrime(), 31);
-    BOOST_CHECK(point.getX()->getNum() < point.getX()->getPrime());
+    Point point = Point(x, y, a, b);
+    BOOST_CHECK_EQUAL(point.getX().getNum(), 18);
+    BOOST_CHECK_EQUAL(point.getX().getPrime(), 31);
+    BOOST_CHECK(point.getX().getNum() < point.getX().getPrime());
 };
 
 BOOST_AUTO_TEST_CASE(constructor_with_int)
 {
-    FieldElement x = FieldElement(18, 31);
-    FieldElement y = FieldElement(7, 31);
-    FieldElement a = FieldElement(5, 31);
-    FieldElement b = FieldElement(7, 31);
-
-    Point point = Point(&x, &y, &a, &b);
-    BOOST_CHECK_EQUAL(point.getX()->getNum(), 18);
-    BOOST_CHECK_EQUAL(point.getX()->getPrime(), 31);
-    BOOST_CHECK(point.getX()->getNum() < point.getX()->getPrime());
+    Point point = Point(18, 7, 5, 7, 31);
+    BOOST_CHECK_EQUAL(point.getX().getNum(), 18);
 };
-
-// BOOST_AUTO_TEST_CASE(point_constructor_throw)
-// {
-//     BOOST_CHECK_THROW(Point(2, 7, 5, 7, 31), std::runtime_error);
-//     BOOST_CHECK_THROW(Point(4358934, 1948234, 0, 7), std::runtime_error);
-//     BOOST_CHECK_THROW(Point(NULL, NULL, 0, 7), std::runtime_error);
-// };
 
 // BOOST_AUTO_TEST_CASE(equality_operator)
 // {
