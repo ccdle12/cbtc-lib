@@ -1,5 +1,3 @@
-#ifndef FieldElement_h
-#define FieldElement_h
 #include "./FieldElement.h"
 
 // Private:
@@ -79,4 +77,3 @@ FieldElement FieldElement::operator/(FieldElement fe2)
 
     return FieldElement(num, FieldElement::mPrime);
 };
-#endif /* FieldElement_h */
