@@ -1,3 +1,5 @@
+#ifndef Point_h
+#define Point_h
 #include "../FieldElement/FieldElement.h"
 
 class Point 
@@ -18,9 +20,13 @@ class Point
         // setter and getters
         FieldElement getX();
         FieldElement getY();
+        FieldElement getA();
+        FieldElement getB();
 
         // arithmetic
-        // bool operator==(Point p2);
-        // bool operator!=(Point p2);
-        // Point operator+(Point p2);
+        bool operator==(Point p2);
+        bool operator!=(Point p2);
+        Point operator+(Point p2);
 };
+
+#endif /* Point_h */
