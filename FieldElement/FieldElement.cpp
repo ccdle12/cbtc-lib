@@ -1,6 +1,8 @@
+#ifndef FieldElement_h
+#define FieldElement_h
 #include "./FieldElement.h"
 
-// private
+// Private:
 bool FieldElement::check_primes_the_same(int prime)
 {
     if (FieldElement::mPrime != prime)
@@ -9,7 +11,7 @@ bool FieldElement::check_primes_the_same(int prime)
         return true;
 }
 
-// public
+// Public:
 // constructor
 FieldElement::FieldElement(int num, int prime): mNum(num), mPrime(prime) 
 {
@@ -77,3 +79,4 @@ FieldElement FieldElement::operator/(FieldElement fe2)
 
     return FieldElement(num, FieldElement::mPrime);
 };
+#endif /* FieldElement_h */
