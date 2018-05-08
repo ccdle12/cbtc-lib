@@ -12,7 +12,7 @@ BOOST_AUTO_TEST_CASE(initialize_fieldelement)
     BOOST_CHECK(&fieldElement);
 };
 
-BOOST_AUTO_TEST_SUITE_END();
+BOOST_AUTO_TEST_SUITE_END(); // initialize_object_tests
 
 
 BOOST_AUTO_TEST_SUITE(arithmetic_operations_tests)
@@ -105,4 +105,4 @@ BOOST_AUTO_TEST_CASE(division)
     BOOST_CHECK(p6.getNum() == 5);
 };
 
-BOOST_AUTO_TEST_SUITE_END()
+BOOST_AUTO_TEST_SUITE_END() // arithmetic_operations_tests
