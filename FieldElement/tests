@@ -1,4 +1,4 @@
 #!/bin/bash
 ./compile
-g++ -o fieldelement_tests -lboost_unit_test_framework fieldelement_tests.cpp && ./fieldelement_tests
+g++ -o fieldelement_tests -lboost_unit_test_framework fieldelement_tests.cpp && ./fieldelement_tests --log_level=test_suite
 
