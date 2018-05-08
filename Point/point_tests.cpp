@@ -6,10 +6,7 @@
 #include "./Point.cpp"
 #include "../FieldElement/FieldElement.cpp"
 
-BOOST_AUTO_TEST_CASE(sanitycheck)
-{
-    std::cout << "Point tests" << std::endl;
-};
+BOOST_AUTO_TEST_SUITE(initialize_object_tests)
 
 BOOST_AUTO_TEST_CASE(constructor_with_FieldElement)
 {
@@ -30,6 +27,10 @@ BOOST_AUTO_TEST_CASE(constructor_with_int)
     BOOST_CHECK_EQUAL(point.getX().getNum(), 18);
 };
 
+BOOST_AUTO_TEST_SUITE_END(); // initialize_object_tests
+
+BOOST_AUTO_TEST_SUITE(run_time_error_initalization_tests)
+
 BOOST_AUTO_TEST_CASE(runtime_error_point_not_on_curve)
 {
     BOOST_CHECK_THROW(Point(2, 7, 5, 7, 1031), std::runtime_error);
@@ -41,6 +42,10 @@ BOOST_AUTO_TEST_CASE(runtime_error_point_not_on_curve)
 
     BOOST_CHECK_THROW(Point(x, y, a, b), std::runtime_error);
 };
+
+BOOST_AUTO_TEST_SUITE_END(); // run_time_error_initalization_tests
+
+BOOST_AUTO_TEST_SUITE(arithmetic_operations_tests)
 
 BOOST_AUTO_TEST_CASE(equality_operator)
 {
@@ -88,3 +93,4 @@ BOOST_AUTO_TEST_CASE(addition_operator)
 //     Point p2 = Point(49, 71, a, b);
 // }
 
+BOOST_AUTO_TEST_SUITE_END(); // arithmetic_operations_tests
