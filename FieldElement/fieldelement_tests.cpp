@@ -4,13 +4,18 @@
 #include <iostream>
 #include "./FieldElement.cpp"
 
+BOOST_AUTO_TEST_SUITE(initialize_object_tests)
+
 BOOST_AUTO_TEST_CASE(initialize_fieldelement)
 {
     FieldElement fieldElement = FieldElement(10, 31);
+    BOOST_CHECK(&fieldElement);
 };
 
+BOOST_AUTO_TEST_SUITE_END();
 
-BOOST_AUTO_TEST_SUITE(arithmetic_operations)
+
+BOOST_AUTO_TEST_SUITE(arithmetic_operations_tests)
 
 BOOST_AUTO_TEST_CASE(check_for_equality)
 {
