@@ -9,6 +9,9 @@ BOOST_AUTO_TEST_CASE(initialize_fieldelement)
     FieldElement fieldElement = FieldElement(10, 31);
 };
 
+
+BOOST_AUTO_TEST_SUITE(arithmetic_operations)
+
 BOOST_AUTO_TEST_CASE(check_for_equality)
 {
     FieldElement fe1 = FieldElement(10, 31);
@@ -96,3 +99,5 @@ BOOST_AUTO_TEST_CASE(division)
     FieldElement p6 = p4 / p5;
     BOOST_CHECK(p6.getNum() == 5);
 };
+
+BOOST_AUTO_TEST_SUITE_END()
