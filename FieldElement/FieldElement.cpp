@@ -6,7 +6,7 @@ bool FieldElement::check_primes_the_same(int prime)
     if (FieldElement::mPrime != prime)
         throw std::runtime_error("Primes must be the same");
 
-        return true;
+    return true;
 }
 
 // Public:
