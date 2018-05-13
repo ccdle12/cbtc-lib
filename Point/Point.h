@@ -1,5 +1,5 @@
-#ifndef Point_h
-#define Point_h
+#ifndef Point_H
+#define Point_H
 #include "../FieldElement/FieldElement.h"
 
 class Point 
@@ -29,4 +29,4 @@ class Point
         Point operator+(Point p2);
 };
 
-#endif /* Point_h */
+#endif /* Point_H */

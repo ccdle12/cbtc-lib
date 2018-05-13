@@ -1,5 +1,5 @@
-#ifndef FieldElement_h
-#define FieldElement_h
+#ifndef FieldElement_H
+#define FieldElement_H
 #include <iostream>
 #include <cmath>
 
@@ -28,4 +28,4 @@ class FieldElement
         FieldElement operator-(FieldElement fe2);
 };
 
-#endif /* FieldElement_h */
+#endif /* FieldElement_H */
