@@ -10,14 +10,15 @@ bool FieldElement::check_primes_the_same(int prime)
 }
 
 // Public:
-// constructor
 FieldElement::FieldElement(int num, int prime): mNum(num), mPrime(prime) 
 {
     if (mNum > mPrime || mNum < 0) 
+    {   
+        std::cout << "Field Element: " << num << std::endl;
         throw std::runtime_error("Num must be within field of prime");
+    }
 }
-
-// setters and getters    
+  
 int FieldElement::getNum() { return mNum; }
 int FieldElement::getPrime() { return mPrime; }
 
