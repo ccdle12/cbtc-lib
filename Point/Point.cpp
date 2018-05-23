@@ -47,6 +47,8 @@ Point Point::operator+(Point p2)
 	{
 		std::cout << "Is this ever called?: " << std::endl;
 		FieldElement slope = (*mY - p2.getY()) / (*mX - p2.getX());
+		std::cout << "Result of mY - p2 Y: " << mY->getNum() << std::endl;
+
 		// slope should be 217
 		std::cout << "Slope: " << slope.getNum() << std::endl;
 
