@@ -72,15 +72,11 @@ BOOST_AUTO_TEST_CASE(not_equal_operator)
 
 BOOST_AUTO_TEST_CASE(addition_operator)
 {
-    Point p1 = Point(18, 77, 5, 7, 1031);
-    Point p2 = Point(-1, -1, 5, 7, 1031);
+    Point p1 = Point(192, 105, 0, 7, 223);
+    Point p2 = Point(49, 71, 0, 7, 223);
     Point p3 = p1 + p2;
-    BOOST_CHECK(p3.getX().getNum() == 2 && p3.getY().getNum() == -5);
-
-    // point doubling
-    // Point p4 = Point(-1, 1, 5, 7);
-    // Point p5 = p4 + p4;
-    // BOOST_CHECK(p5.getX() == 18 && p5.getY() == -77);
+    // expected x = 18 | y = 189
+    // BOOST_CHECK_EQUAL(p3.getX().getNum(), 2);
 };
 
 // BOOST_AUTO_TEST_CASE(multiplying_points)
