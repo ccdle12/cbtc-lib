@@ -61,7 +61,8 @@ Point Point::operator+(Point p2)
 		std::cout << "X3 VALUE: " << x3.getNum() << std::endl;
 
 		return Point(x3.getNum(), y3.getNum(), mA->getNum(), mB->getNum(), x3.getPrime());
-	} 
+	}
+}; 
 	// else {
 	// 	// point doubling
 	// 	// (3 * x1^2 + a) / (2 * y1)
@@ -76,4 +77,3 @@ Point Point::operator+(Point p2)
 
 	// 	return Point(&x3, &y3, &this->a, &this->b);
 	// }
-};

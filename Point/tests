@@ -1,3 +1,0 @@
-#!/bin/bash
-./compile
-g++ -o point_tests  -lboost_unit_test_framework point_tests.cpp && ./point_tests --log_level=test_suite
