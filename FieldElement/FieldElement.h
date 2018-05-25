@@ -16,6 +16,7 @@ class FieldElement
         int getPrime();
 
         // constructor
+        FieldElement();
         FieldElement(int num, int prime);
 
         // arithmetic

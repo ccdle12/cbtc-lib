@@ -7,9 +7,10 @@ bool FieldElement::check_primes_the_same(int prime)
         throw std::runtime_error("Primes must be the same");
 
     return true;
-}
+};
 
 // Public:
+FieldElement::FieldElement() {};
 FieldElement::FieldElement(int num, int prime): mNum(num), mPrime(prime) 
 {
     if (mNum > mPrime || mNum < 0) 
@@ -17,7 +18,7 @@ FieldElement::FieldElement(int num, int prime): mNum(num), mPrime(prime)
         std::cout << "Field Element: " << num << std::endl;
         throw std::runtime_error("Num must be within field of prime");
     }
-}
+};
   
 int FieldElement::getNum() { return mNum; }
 int FieldElement::getPrime() { return mPrime; }
