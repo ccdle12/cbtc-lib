@@ -27,7 +27,6 @@ FieldElement Point::getY() { return mY; };
 FieldElement Point::getA() { return mA; };
 FieldElement Point::getB() { return mB; };
 
-// arithmetic
 bool Point::operator==(Point p2)
 {
 	return mX == p2.getX() && mY == p2.getY() && mA == p2.getA() && mB == p2.getB();

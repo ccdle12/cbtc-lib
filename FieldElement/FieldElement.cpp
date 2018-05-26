@@ -23,7 +23,6 @@ FieldElement::FieldElement(int num, int prime): mNum(num), mPrime(prime)
 int FieldElement::getNum() { return mNum; }
 int FieldElement::getPrime() { return mPrime; }
 
-// arithmetic
 bool FieldElement::operator==(FieldElement fe2)
 {
     return FieldElement::mNum == fe2.getNum() && FieldElement::mPrime == fe2.getPrime();
