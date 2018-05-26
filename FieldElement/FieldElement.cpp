@@ -1,4 +1,4 @@
-#include "./FieldElement.h"
+#include "FieldElement.h"
 
 // Private:
 bool FieldElement::check_primes_the_same(int prime)

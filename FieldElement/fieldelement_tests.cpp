@@ -2,7 +2,7 @@
 #define BOOST_TEST_MODULE FieldElement_tests
 #include <boost/test/unit_test.hpp>
 #include <iostream>
-#include "./FieldElement.cpp"
+#include "FieldElement.cpp"
 
 BOOST_AUTO_TEST_SUITE(initialize_object_tests)
 

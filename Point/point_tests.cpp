@@ -3,7 +3,7 @@
 
 #include <boost/test/unit_test.hpp>
 #include <iostream>
-#include "./Point.cpp"
+#include "Point.cpp"
 #include "../FieldElement/FieldElement.cpp"
 
 BOOST_AUTO_TEST_SUITE(initialize_object_tests)
