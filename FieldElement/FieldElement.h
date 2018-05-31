@@ -17,7 +17,7 @@ class FieldElement
         boost::multiprecision::cpp_int getPrime();
 
         FieldElement();
-        FieldElement(boost::multiprecision::cpp_int num, boost::multiprecision::cpp_int prime);
+        FieldElement(const boost::multiprecision::cpp_int num, const boost::multiprecision::cpp_int prime);
 
         bool operator==(FieldElement fe2);
         bool operator!=(FieldElement fe2);
