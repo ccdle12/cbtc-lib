@@ -130,7 +130,11 @@ BOOST_AUTO_TEST_CASE(multiplying_points)
     Point p10 = p9.rmul(8);
     BOOST_CHECK_EQUAL(p10.getX().getNum(), 116);
     BOOST_CHECK_EQUAL(p10.getY().getNum(), 55);
-    // (21, 47, 71, None, None),
-}
+
+    Point p11 = Point(47, 71, a, b, prime);
+    Point p12 = p11.rmul(21);
+    BOOST_CHECK_EQUAL(p12.getX().getNum(), 0);
+    BOOST_CHECK_EQUAL(p12.getY().getNum(), 0);
+};
 
 BOOST_AUTO_TEST_SUITE_END(); // arithmetic_operations_tests
