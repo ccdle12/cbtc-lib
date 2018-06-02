@@ -1,0 +1,18 @@
+#!/bin/bash
+
+function all() {
+    FieldElement
+    Point
+}
+
+function FieldElement() {
+     g++ -o fieldelement_tests -lboost_unit_test_framework ./FieldElement/fieldelement_tests.cpp && ./fieldelement_tests --log_level=test_suite
+}
+
+function Point() {
+    g++ -o point_tests -lboost_unit_test_framework ./Point/point_tests.cpp && ./point_tests --log_level=test_suite
+}
+
+cmd="$1"
+shift
+eval "$cmd $@"
