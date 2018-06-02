@@ -6,7 +6,7 @@ function all() {
 }
 
 function FieldElement() {
-     g++ -o fieldelement_tests -lboost_unit_test_framework ./FieldElement/fieldelement_tests.cpp && ./fieldelement_tests --log_level=test_suite
+    g++ -o fieldelement_tests -lboost_unit_test_framework ./FieldElement/fieldelement_tests.cpp && ./fieldelement_tests --log_level=test_suite
 }
 
 function Point() {
