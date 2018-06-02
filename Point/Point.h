@@ -1,6 +1,7 @@
 #ifndef Point_H
 #define Point_H
 #include "../FieldElement/FieldElement.h"
+#include <boost/multiprecision/cpp_int.hpp>
 
 class Point 
 {
@@ -11,8 +12,11 @@ class Point
         FieldElement mB;
 
     public:
+        Point();
         Point(FieldElement x, FieldElement y, FieldElement a, FieldElement b);
-        Point(const int _x, const int _y, const int _a, const int _b, const int prime);
+        Point(const boost::multiprecision::cpp_int x, const boost::multiprecision::cpp_int y, 
+              const boost::multiprecision::cpp_int a, const boost::multiprecision::cpp_int b, 
+              const boost::multiprecision::cpp_int prime);
 
         FieldElement getX();
         FieldElement getY();
@@ -22,6 +26,8 @@ class Point
         bool operator==(Point p2);
         bool operator!=(Point p2);
         Point operator+(Point p2);
+        Point rmul(const boost::multiprecision::cpp_int scalar);
+        Point pointDoubling();
 };
 
 #endif /* Point_H */

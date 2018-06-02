@@ -2,23 +2,28 @@
 #include "Point.h"
 #include <cmath>
 
+namespace mp = boost::multiprecision;
+
 // Public:
-Point::Point(FieldElement x, FieldElement y, FieldElement a, FieldElement b)
-	: mX(x), mY(y), mA(a), mB(b) 
+Point::Point(FieldElement x, FieldElement y, FieldElement a, FieldElement b): mX(x), mY(y), mA(a), mB(b) 
 {
-	if (mY.powers(2) != mX.powers(3) + (mA * mX) + mB)
-			throw std::runtime_error("Point not on curve");
-	
-	// unsure how to handle point at infinity
-	// if (x.getNum() == NULL && y.getNum() == NULL)
-	// 	throw std::runtime_error("Poiny at Infinity");
+	if (0 == x.getNum() && 0 == y.getNum())
+		return;
+
+	if (mY.pow(2) != mX.pow(3) + (mA * mX) + mB)
+		throw std::runtime_error("Point not on curve");
 };
-	
-Point::Point(const int x, const int y, const int a, const int b, const int prime)
+
+Point::Point(const boost::multiprecision::cpp_int x, const boost::multiprecision::cpp_int y, 
+			 const boost::multiprecision::cpp_int a, const boost::multiprecision::cpp_int b, 
+			 const boost::multiprecision::cpp_int prime)
 	: mX(FieldElement(x, prime)), mY(FieldElement(y, prime)), 
 	  mA(FieldElement(a, prime)), mB(FieldElement(b, prime))
 {
-	if (mY.powers(2) != mX.powers(3) + (mA * mX) + mB)
+	if (0 == x && 0 == y)
+		return;
+
+	if (mY.pow(2) != mX.pow(3) + (mA * mX) + mB)
 		throw std::runtime_error("Point not on curve");
 };
 
@@ -39,40 +44,60 @@ bool Point::operator!=(Point p2)
 
 Point Point::operator+(Point p2)
 {
-	// if (this->a != p2.a || this->b != p2.b)
-	// 	throw std::runtime_error("Points are using different curves");
-	std::cout << "Before if: " << std::endl;
+	if (mA != p2.getA() || mB != p2.getB())
+		throw std::runtime_error("Points are using different curves");
+
+	if (mX.getNum() == 0)
+		return p2;
+
+	if (p2.getX().getNum() == 0)
+		return *this;
+
+	// Point at infinity
+	if (mX == p2.getX() && mY != p2.getY())
+		return Point(0, 0, mA.getNum(), mB.getNum(), mX.getPrime());
+
 	if (mX != p2.getX())
 	{
-		std::cout << "Is this ever called?: " << std::endl;
 		FieldElement slope = (mY - p2.getY()) / (mX - p2.getX());
-		std::cout << "Result of mY - p2 Y: " << mY.getNum() << std::endl;
-
-		// slope should be 217
-		std::cout << "Slope: " << slope.getNum() << std::endl;
-
-		// slope^2 - x1 - x2
-		FieldElement x3 = slope.powers(2) - mX - p2.getX();
-
-		// slope * (x1 - x3) - y1
+		FieldElement x3 = slope.pow(2) - mX - p2.getX();
 		FieldElement y3 = slope * (mX - x3) - mY;
 
-		std::cout << "X3 VALUE: " << x3.getNum() << std::endl;
-
-		return Point(x3.getNum(), y3.getNum(), mA.getNum(), mB.getNum(), x3.getPrime());
+		return Point(x3, y3, mA, mB);
+	} else {
+		return p2.pointDoubling();
 	}
-}; 
-	// else {
-	// 	// point doubling
-	// 	// (3 * x1^2 + a) / (2 * y1)
-	// 	// Hacky solution to using prime for FieldElement
-	// 	FieldElement slope = (FieldElement(3, this->x.getPrime()) * this->x.powers(2) + this->a) / (FieldElement(2, this->x.getNum()) * this->y);
+};
 
-	// 	// slope^2 - 2 * x1
-	// 	FieldElement x3 = slope.powers(2) - FieldElement(2, this->x.getPrime()) * this->x;
+Point Point::pointDoubling()
+{
+	// (3 * x1^2 + a) / (2 * y1)
+	FieldElement numeratorCoefficient = FieldElement(3, mX.getPrime());
+	FieldElement denominatorCoefficient = FieldElement(2, mX.getPrime());
 
-	// 	// slope * (x1 - x3) - y1
-	// 	FieldElement y3 = slope * (this->x - x3) - this->y;
+	FieldElement slope = (numeratorCoefficient * (mX.pow(2)) + mA) / (denominatorCoefficient * mY);
 
-	// 	return Point(&x3, &y3, &this->a, &this->b);
-	// }
+	// slope^2 - 2 * x1
+	FieldElement x3 = slope.pow(2) - denominatorCoefficient * mX;
+
+	// slope * (x1 - x3) - y1
+	FieldElement y3 = slope * (mX - x3) - mY;
+
+	return Point(x3, y3, mA, mB);
+};
+
+Point Point::rmul(const boost::multiprecision::cpp_int scalar)
+{
+	mp::cpp_int xPrime = mX.getPrime();
+	
+	FieldElement x = FieldElement(0, xPrime);
+	FieldElement y = FieldElement(0, xPrime);
+	FieldElement a = FieldElement(0, xPrime);
+	FieldElement b = FieldElement(7, xPrime);
+	Point point = Point(x, y, a, b);
+
+	for (int i = 0; i < scalar; ++i)
+		point = point + *this;
+	
+	return point;
+};
