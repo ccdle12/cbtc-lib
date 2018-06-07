@@ -18,6 +18,7 @@ class FieldElement
 
         FieldElement();
         FieldElement(const boost::multiprecision::cpp_int num, const boost::multiprecision::cpp_int prime);
+        ~FieldElement(){};
 
         bool operator==(FieldElement fe2);
         bool operator!=(FieldElement fe2);

@@ -17,6 +17,7 @@ class Point
         Point(const boost::multiprecision::cpp_int x, const boost::multiprecision::cpp_int y, 
               const boost::multiprecision::cpp_int a, const boost::multiprecision::cpp_int b, 
               const boost::multiprecision::cpp_int prime);
+        ~Point(){};
 
         FieldElement getX();
         FieldElement getY();
