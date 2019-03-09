@@ -21,8 +21,6 @@ BOOST_AUTO_TEST_CASE(P_initalization)
     S256Point point = S256Point();
 
     mp::cpp_int less_than_N = (mp::cpp_int) pow(10.0, 22);
-    std::cout << "P Value: " << point.P << std::endl;
-    std::cout << "less_than_N Value: " << less_than_N << std::endl;
     BOOST_CHECK(point.P > less_than_N);
 };
 

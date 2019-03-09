@@ -5,4 +5,9 @@
 namespace mp = boost::multiprecision;
 
 // Public
-S256Point::S256Point(): P(pow(2.0, 256) - pow(2.0, 32) - pow(2.0, 97)), A(0), B(7) {};
+S256Point::S256Point()
+{
+    this->P = (mp::cpp_int) pow(2.0, 256) - (mp::cpp_int) pow(2.0, 32) - (mp::cpp_int) pow(2.0, 97);
+    this->A = (mp::cpp_int) 0;
+    this->B = (mp::cpp_int) 7;
+};

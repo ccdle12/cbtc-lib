@@ -5,9 +5,9 @@
 class S256Point
 {
     public:
-        const boost::multiprecision::cpp_int P;
-        const boost::multiprecision::cpp_int A;
-        const boost::multiprecision::cpp_int B;
+        boost::multiprecision::cpp_int P;
+        boost::multiprecision::cpp_int A;
+        boost::multiprecision::cpp_int B;
         S256Point();
 };
 
