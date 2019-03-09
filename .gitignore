@@ -1,3 +1,4 @@
 .vscode/
 point_tests
 fieldelement_tests
+*.swp

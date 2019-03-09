@@ -1,0 +1,25 @@
+#!/bin/bash
+
+function all() {
+    mkdir temp_out
+    FieldElement
+    Point
+    S256Point
+    rm -rf temp_out
+}
+
+function FieldElement() {
+    g++ -o ./temp_out/FieldElement_tests -lboost_unit_test_framework ./FieldElement/FieldElement_tests.cpp && ./temp_out/FieldElement_tests --log_level=test_suite
+}
+
+function Point() {
+    g++ -o ./temp_out/Point_tests -lboost_unit_test_framework ./Point/Point_tests.cpp && ./temp_out/Point_tests --log_level=test_suite
+}
+
+function S256Point() {
+    g++ -o ./temp_out/S256Point_tests -lboost_unit_test_framework ./S256Point/S256Point_tests.cpp && ./temp_out/S256Point_tests --log_level=test_suite
+}
+
+cmd="$1"
+shift
+eval "$cmd $@"
